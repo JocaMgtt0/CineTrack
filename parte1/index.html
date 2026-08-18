@@ -5,40 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineTrack</title>
 </head>
-<body>
+
+<header>
+
     <h1>CineTrack</h1>
-    <p><Strong>CineTrack</Strong> é um gerenciador pessoal de filmes o que já viu, 
-        o que já viu, o que está vendo e o que quer ver.</p>
+    <input type="search" aria-label="Bucar filmes">
+    <button>+ Adicionar</button>
 
-    <a href="adicionar.html">Adicionar Filmes</a>
+</header>
 
-    <h2>Status Possíveis</h2>
-    <ul>
-        <li>Assistido</li>
-        <li>Assistindo</li>
-        <li>Quero assistir</li>
-    </ul>
+<nav aria-label="Filtros de status">
+    <button>Todos</button>
+    <button>Assistido</button>
+    <button>Assistindo</button>
+    <button>Quero assistir</button>
+</nav>
 
-    <h2>Meus Filmes Favoritos</h2>
+<main>
 
-    <ol>
-        <li>A origem</li>
-        <li>Interestelar</li>
-        <li>Parasita</li>
-    </ol>
+    <section id="lista" aria-live="polite">
+        <article class="card">
+            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg" alt="Imagem Interestelar" width="300px">
+            <h2>Interestelar</h2>
+            <p>Aventura, Drama e Ficção científica - 2014</p> 
+            <p>
+                Nota: 
+                &starf;
+                &starf;
+                &starf;
+                &starf;
+                &starf;
+            </p><br>
 
-    <h3>Sobre A Origem</h3>
-    <dl>
-        <dt>Diretor</dt>
-            <dd>Christopher Nolan</dd>
-        <dt>Ano</dt>
-            <dd>2010</dd>
-        <dt>Gênero</dt>
-            <dd>Ficção Científica</dd>
-    </dl>  
-    <p>Direitos &copy; 2025 CineTrack</p>
+            <span>Assistido: </span>
+            <button>Editar</button>
+            <button>Remover</button>
+        </article>
 
-    
-    
-</body>
+        <article class="card">
+
+            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/bHJEn8O7eU42Xz2M2cENBsPFHWO.jpg" alt="Imagem do filme O Irlandes" width="300px">
+            <h2>O Irlandês</h2>
+            <p>Crime, Drama e História - 2019</p> 
+            <p>
+                Nota:                
+                &starf;
+                &starf;
+                &starf;
+                &star;
+                &star;
+            </p><br>
+
+            <span>Assistido: </span>
+            <button>Editar</button>
+            <button>Remover</button>
+
+        </article>
+
+        <article class="card">
+
+            <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/wZhxtK387ZLFQQ38l1Z3ELdszVa.jpg" alt="Homem aranha" width="300px">
+            <h2>Homem-Aranha: Um Novo Dia </h2>
+            <p>Ficção científica, Ação e Aventura - 2026</p> 
+            <p>
+                Nota: 
+                &starf;
+                &starf;
+                &starf;
+                &star;
+                &star;
+            </p><br>
+
+            <span>Assistido: </span>
+            <button>Editar</button>
+            <button>Remover</button>
+
+        </article>
+    </section>
+
+</main>
+<footer><small>CineTrack - UEM</small></footer>
+
+
 </html>
