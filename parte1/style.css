@@ -1,0 +1,147 @@
+/* Cores:
+   Primária: #f4a261
+   Acento: #e09f3e
+   Neutro: #353038
+*/
+
+* { box-sizing: border-box;
+margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+img {max-width: 100%; display: block;}
+
+button { font: inherit; cursor: pointer; }
+
+body {
+    background: #353038;
+    font-family: system-ui, sans-serif;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+nav{
+    padding: 10px;
+    background: #4a4e69;
+    border: 1px solid #4a4e69;
+    #todos {
+        padding: 3px;
+        border-radius: 5px;
+        color: #353038;
+        background-color: #7f8595;
+        border: 1px solid #7f8595;
+    }
+    #Assistido{
+        padding: 3px;
+        border-radius: 5px;
+        color: #353038;
+        background-color: #7f8595;
+        border: 1px solid #7f8595;
+    }
+    #Assistindo{
+        padding: 3px;
+        border-radius: 5px;
+        color: #353038;
+        background-color: #7f8595;
+        border: 1px solid #7f8595;
+    }
+    #Quero{
+        padding: 3px;
+        border-radius: 5px;
+        color: #353038;
+        background-color: #7f8595;
+        border: 1px solid #7f8595;
+    }
+    
+
+}
+
+.card  {
+    background: #ffffff;
+    color: #353038;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #353038;
+    margin: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    #Edit{
+        background: #4a4e69;
+        border: 1px solid #7f8a95;
+        padding: 0.3%;
+        border-radius: 5px;
+        color: #FAC81B;
+        font-family: Roboto Mono;
+    }
+    #Remove{
+        color: #a93528;
+        background: #4a4e69;
+        border: 1px solid #7f8a95;
+        padding: 0.3%;
+        border-radius: 5px;
+        font-family: Roboto Mono;
+    }
+
+}
+
+header{
+    background-color: #8a5a1a;
+    padding: 1rem;
+    color: #ffffff;
+    .inputFilme{
+        padding: 5px;
+    }
+    .adicionar {
+        background-color: #8D3F36;
+        font-size: small;
+        padding: 5px;
+        font-family: Arial;
+        color: #ccc;
+        border-radius: 10px;
+        border: 1px solid rgb(58, 38, 159);
+    }
+}
+
+footer {
+    padding-top: 1%;
+    background: #4a4e69;
+    color: #ccc;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+#lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#addFooter{
+    color:#3bd1fa;
+}
+
+#Voltar{
+    color:#3bd1fa;
+}
+
+#bodyAdd{
+    margin: 2em;
+    color: #ccc;
+    
+    #can{
+        padding: 3px;
+        color: #a93528;
+        background: #353038;
+        border-radius: 5px;
+        border: 1px solid #4a4e69;
+    }
+    #Salvar{
+        padding: 3px;
+        border-radius: 5px;
+        color: chartreuse;
+        background: #353038;
+        border: 1px solid #4a4e69;
+    }
+    
+}
+
