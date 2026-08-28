@@ -9,7 +9,13 @@ margin: 0; padding: 0; }
 
 html { font-size: 16px; }
 
-img {max-width: 100%; display: block;}
+img {
+    max-width: 100%;
+    display: block;
+    border: 1px solid #7f8a95;
+    border-radius: 5px;
+}
+
 
 button { font: inherit; cursor: pointer; }
 
@@ -20,43 +26,35 @@ body {
     line-height: 1.5;
 }
 
-nav{
-    padding: 10px;
-    background: #4a4e69;
-    border: 1px solid #4a4e69;
-    #todos {
-        padding: 3px;
-        border-radius: 5px;
-        color: #353038;
-        background-color: #7f8595;
-        border: 1px solid #7f8595;
-    }
-    #Assistido{
-        padding: 3px;
-        border-radius: 5px;
-        color: #353038;
-        background-color: #7f8595;
-        border: 1px solid #7f8595;
-    }
-    #Assistindo{
-        padding: 3px;
-        border-radius: 5px;
-        color: #353038;
-        background-color: #7f8595;
-        border: 1px solid #7f8595;
-    }
-    #Quero{
-        padding: 3px;
-        border-radius: 5px;
-        color: #353038;
-        background-color: #7f8595;
-        border: 1px solid #7f8595;
-    }
-    
 
+.ativo{
+    background-color: #22223b;
+    color: #7f8595;
+    border: 1px solid #22223b;
+}
+nav{
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    background: #2f3e46;
+    border: none;
+    box-shadow: #353038;
+    button{
+        padding: 5px;
+        border-radius: 30px;
+        color: #22223b;
+        background-color: #7f8595;
+        border: 2px solid #22223b;
+        font-weight: bold;
+    }
+}
+
+.acoes {
+    margin-top: auto;
 }
 
 .card  {
+    display: flex;
     background: #ffffff;
     color: #353038;
     padding: 16px;
@@ -64,6 +62,12 @@ nav{
     border: 1px solid #353038;
     margin: 1rem;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    flex-direction: column; 
+    max-width: 300px; /*Prefiro o card maior*/
+    transition: background-color 0.3s ease; 
+    box-sizing: border-box;
+    flex: 1 1 240px;
+
     #Edit{
         background: #4a4e69;
         border: 1px solid #7f8a95;
@@ -83,27 +87,73 @@ nav{
 
 }
 
+.card:hover {
+  background-color: #22223b;
+  color: #ffffff; 
+}
+
+.emBreve{
+    background-color: #7f8a95;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial;
+    font-style: italic;
+    font-size: small;
+    font-weight: bold;
+    color: #22223b;
+}
+
 header{
-    background-color: #8a5a1a;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background-color: #2f3e46;
     padding: 1rem;
+    justify-content: space-between;
     color: #ffffff;
-    .inputFilme{
-        padding: 5px;
+    flex-wrap: wrap;
+    div {
+        flex-basis: 100%;       
+        width: 100%;
+        display: flex;        
     }
-    .adicionar {
-        background-color: #8D3F36;
-        font-size: small;
-        padding: 5px;
-        font-family: Arial;
-        color: #ccc;
+    div hr{
+        border: none;
+        width: 60%;
+        height: 2px;
+        background-color: #22223b;
+        margin-bottom: 10px 0;
         border-radius: 10px;
-        border: 1px solid rgb(58, 38, 159);
+    }
+    h1{
+        color: #7f8595;
+        flex: 0 0 auto;
+    }
+    input{
+        padding: 5px;
+        flex: auto;
+        height: 30px;
+        border-radius: 10px;
+        border: floralwhite;
+    }
+    button{
+        background-color: #7f8595;
+        flex: 0 0 auto;
+        font-size: small;
+        padding: 8px;
+        font-family: Arial;
+        color: #22223b;
+        border-radius: 10px;
+        border: 1px #22223b;
+        font-weight: bold;
     }
 }
 
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-top: 1%;
-    background: #4a4e69;
     color: #ccc;
     padding: 1.5rem;
     text-align: center;
@@ -114,17 +164,18 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    padding: 1rem;
 }
 
-#addFooter{
+.addFooter{
     color:#3bd1fa;
 }
 
-#Voltar{
+.Voltar{
     color:#3bd1fa;
 }
 
-#bodyAdd{
+.bodyAdd{
     margin: 2em;
     color: #ccc;
     

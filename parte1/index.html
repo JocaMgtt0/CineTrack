@@ -9,26 +9,27 @@
 
 
 <body>
-    
 
-<header>    
+    <header >    
 
-    <h1>CineTrack</h1>
-    <input type="search" aria-label="Bucar filmes" class="inputFilme">
-    <button class="adicionar">+ Adicionar</button>
+        <h1>CineTrack</h1>
+        <input type="search" aria-label="Bucar filmes" class="inputFilme" placeholder="Digite um filme">
+        <button class="adicionar">+ Adicionar</button>
+        <div>
+            <hr>
+        </div>
+    </header>
 
-</header>
-
-<nav aria-label="Filtros de status" class="navegacao">
-    <button id="todos">Todos</button>
-    <button id="Assistido">Assistido</button>
-    <button id="Assistindo">Assistindo</button>
-    <button id="Quero">Quero Assistir</button>
-</nav>
+    <nav aria-label="Filtros de status" class="navegacao">
+        <button class="ativo" id="todos">Todos</button>
+        <button id="Assistido">Assistido</button>
+        <button id="Assistindo">Assistindo</button>
+        <button id="Quero">Quero Assistir</button>
+    </nav>
 
 <main class="corpo-principal">
 
-    <section id="lista" aria-live="polite">
+    <section class="lista" id="lista" aria-live="polite">
         <article class="card">
             <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg" alt="Imagem Interestelar" width="300px" class="img">
             <h2>Interestelar</h2>
@@ -43,8 +44,10 @@
             </p><br>
 
             <span>Assistido: </span>
-            <button id="Edit">Editar</button>
-            <button id="Remove">Remover</button>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
         </article>
 
         <article class="card">
@@ -62,8 +65,10 @@
             </p><br>
 
             <span>Assistido: </span>
-            <button id="Edit">Editar</button>
-            <button id="Remove">Remover</button>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
 
         </article>
 
@@ -81,14 +86,78 @@
                 &star;
             </p><br>
             <span>Assistido: </span>
-            <button id="Edit">Editar</button>
-            <button id="Remove">Remover</button>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
+
+        </article>
+
+        <article class="card">
+
+            <img src="https://www.themoviedb.org/t/p/w1280/orOyVAUxVN1ncz2EcrMDcTd25e8.jpg" width="300px">
+            <h2>Maze Runner - Correr ou Morrer </h2>
+            <p>Ação, Mistério, Ficção científica e Thriller
+             - 2014</p> 
+            <p>
+                Nota: 
+                &starf;
+                &starf;
+                &starf;
+                &star;
+                &star;
+            </p><br>
+            <span>Assistido: </span>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
+
+        </article>
+        <article class="card">
+
+            <img src="https://www.themoviedb.org/t/p/w1280/4e2iw4WmfoBK49K9Hy9ATxBzCv6.jpg" width="300px">
+            <h2>The Hunger Games: Amanhecer na Ceifa </h2>
+            <p>Ficção científica, Ação e Aventura - 2026 <span class="emBreve">Em Breve....</span></p> 
+            <p>
+                Nota: 
+                &starf;
+                &starf;
+                &starf;
+                &star;
+                &star;
+            </p><br>
+            <span>Assistido: </span>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
+
+        </article>
+        <article class="card">
+
+            <img src="https://www.themoviedb.org/t/p/w1280/gppJfoJbJRwjJmMKUTDeNfbrSg8.jpg" width="300px">
+            <h2>TA Odisseia </h2>
+            <p>Aventura, Ação e Fantasia - 2026</p> 
+            <p>
+                Nota: 
+                &starf;
+                &starf;
+                &starf;
+                &star;
+                &star;
+            </p><br>
+            <span>Assistido: </span>
+            <div class="acoes">
+                <button id="Edit">Editar</button>
+                <button id="Remove">Remover</button>
+            </div>
 
         </article>
     </section>
 
 </main>
-    <footer><small>CineTrack - UEM <br><a href="adicionar.html" id="addFooter">Adicionar +</a></small></footer>
+    <footer><small>CineTrack - UEM <br><a href="adicionar.html" class="addFooter" id="addFooter">Adicionar +</a></small></footer>
 </body>
 
 </html>
