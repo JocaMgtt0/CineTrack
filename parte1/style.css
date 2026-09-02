@@ -9,13 +9,12 @@ margin: 0; padding: 0; }
 
 html { font-size: 16px; }
 
-img {
-    max-width: 100%;
-    display: block;
-    border: 1px solid #7f8a95;
-    border-radius: 5px;
+.card img{
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 6px;
 }
-
 
 button { font: inherit; cursor: pointer; }
 
@@ -32,6 +31,7 @@ body {
     color: #7f8595;
     border: 1px solid #22223b;
 }
+
 nav{
     display: flex;
     gap: 5px;
@@ -47,6 +47,7 @@ nav{
         border: 2px solid #22223b;
         font-weight: bold;
     }
+
 }
 
 .acoes {
@@ -63,10 +64,8 @@ nav{
     margin: 1rem;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     flex-direction: column; 
-    max-width: 300px; /*Prefiro o card maior*/
     transition: background-color 0.3s ease; 
     box-sizing: border-box;
-    flex: 1 1 240px;
 
     #Edit{
         background: #4a4e69;
@@ -139,13 +138,13 @@ header{
     button{
         background-color: #7f8595;
         flex: 0 0 auto;
-        font-size: small;
         padding: 8px;
         font-family: Arial;
         color: #22223b;
         border-radius: 10px;
         border: 1px #22223b;
         font-weight: bold;
+        font-size: clamp(1.2rem, 1rem + 2.5vw, 1.0rem);
     }
 }
 
@@ -160,11 +159,22 @@ footer {
     font-size: 0.9rem;
 }
 
-#lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
+#lista{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+@media (min-width: 1024px){
+    #lista{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media(max-width: 500px){
+    #addLabel{
+        display: none;
+    }
 }
 
 .addFooter{
