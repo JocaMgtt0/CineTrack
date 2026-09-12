@@ -331,10 +331,6 @@ figcaption{
     margin: 2em;
     background: var(--cor-fundo);
     color: var(--cor-texto);
-    input{
-        width: 250px;
-
-    }
 
     #can{
         padding: 3px;
@@ -346,11 +342,41 @@ figcaption{
     #Salvar{
         padding: 3px;
         border-radius: 5px;
-        color: chartreuse;
-        background: var(--cor-texto);
+        background: var(--cor-primaria);
+        color: var(--cor-clara-fundo);
         border: 1px solid var(--cor-primaria);
     }
 
+}
+.bodyAdd #form-filme{
+    max-width: 480px;
+    margin: 2em auto;
+    background: var(--cor-clara-fundo);
+    padding: 24px;
+    border-radius: var(--raio);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.bodyAdd .campo{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.bodyAdd .campo label{
+    font-weight: bold;
+}
+.bodyAdd input,
+.bodyAdd select,
+.bodyAdd textarea{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid var(--cor-media);
+    border-radius: var(--raio);
+    font: inherit;
+}
+.bodyAdd .acoes-formulario{
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
 }
 .bodyAdd #can:hover{
     background: var(--cor-alerta);

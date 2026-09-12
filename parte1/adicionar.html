@@ -14,45 +14,55 @@
     
 
 
-    <div id="modal" hidden>
-        <div class="modal-conteudo">
-            <form id="form-filme" action="/filmes" method="post">
-                <label for="titulo"> Titulo</label><br>
-                    <input type="text" id="titulo" name="titulo" required >
-                    <br><br>
-                    
-                <label for="ano">Ano</label><br>
-                    <input type="number" id="ano" name="ano" min="1888" max="2030" required>
-                    <br><br>
-                    
-                <label for="genero">Gênero</label><br>
-                    <input type="text" id="genero" name="genero" required>
-                    <br><br>
-        
-                <label for="urlPoster">URL do pôster</label><br>
-                    <input type="url" title="urlPoster" id="urlPoster" name="urlPoster" placeholder="...">
-                    <br><br>
-                    
-                    <label for="status">Status</label><br>
-                    <select name="status" id="status" required >
-                        
-                        <option value="queroAssistir">Quero assistir</option>
-                        <option value="assistido">Assistido</option>
-                    </select><br><br>
-                    
-                <label for="nota">Nota (1 a 5)</label><br>
-                    <input type="number" name="nota" id="nota" min="0" max="5">
-                    <br><br>
-                
-                <label for="comentario">Comentário</label><br>
-                <textarea name="comentario" id="comentario" rows="4" cols="50"></textarea><br><br>
-            </form>
+    <form id="form-filme" action="/filmes" method="post">
+        <div class="campo">
+            <label for="titulo"> Titulo</label><br>
+                <input type="text" id="titulo" name="titulo" required >
+                <br><br>
         </div>
-    </div>
 
+        <div class="campo">
+            <label for="ano">Ano</label><br>
+                <input type="number" id="ano" name="ano" min="1888" max="2030" required>
+                <br><br>
+        </div>
 
-    <button type="button" id="can">Cancelar</button>
-    <button type="submit" id="Salvar">Salvar</button>
+        <div class="campo">
+            <label for="genero">Gênero</label><br>
+                <input type="text" id="genero" name="genero" required>
+                <br><br>
+        </div>
+
+        <div class="campo">
+            <label for="urlPoster">URL do pôster</label><br>
+                <input type="url" title="urlPoster" id="urlPoster" name="urlPoster" placeholder="...">
+                <br><br>
+        </div>
+
+        <div class="campo">
+            <label for="status">Status</label><br>
+                <select name="status" id="status" required >
+                    <option value="queroAssistir">Quero assistir</option>
+                    <option value="assistido">Assistido</option>
+                </select><br><br>
+        </div>
+
+        <div class="campo">
+            <label for="nota">Nota (1 a 5)</label><br>
+                <input type="number" name="nota" id="nota" min="0" max="5">
+                <br><br>
+        </div>
+
+        <div class="campo">
+            <label for="comentario">Comentário</label><br>
+            <textarea name="comentario" id="comentario" rows="4" cols="50"></textarea><br><br>
+        </div>
+
+        <div class="acoes-formulario">
+            <button type="button" id="can">Cancelar</button>
+            <button type="submit" id="Salvar">Salvar</button>
+        </div>
+    </form>
 
 
     
