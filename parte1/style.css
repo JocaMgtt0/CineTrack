@@ -386,3 +386,21 @@ figcaption{
     background: var(--cor-sucesso);
     color: var(--cor-clara-fundo);
 }
+
+@media print{
+    :root{
+        --cor-fundo: #ffffff;
+        --cor-texto: #000000;
+    }
+    .inputFilme,
+    .adicionar,
+    nav,
+    .acoes,
+    footer{
+        display: none;
+    }
+    .card{
+        box-shadow: none;
+        break-inside: avoid;
+    }
+}
