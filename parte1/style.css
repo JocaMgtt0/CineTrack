@@ -20,89 +20,16 @@
     }
 }
 
-#modal{
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-}
-.modal-conteudo{
-    background: var(--cor-clara-fundo);
-    padding: 24px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 420px;
-    max-height: 90vh;
-    overflow: auto;
-}
-
-
-#modal[hidden]{display: none;}
-
-@keyframes aparecer {
-    from{
-        opacity: 0;
-        transform: translateY(8px); 
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.modal-conteudo{
-    animation: aparecer 200ms ease;
-}
-#modal label{
-    font-weight: bold;
-}
-#modal input,
-#modal select,
-#modal textarea{
-    width: 100%;
-    padding: 6px;
-    border: 1px solid var(--cor-media);
-    border-radius: var(--raio);
-}
-.modal-conteudo button{
-    margin-top: 12px;
-    margin-right: 8px;
-}
-#modal #can{
-    padding: 3px;
-    color: var(--cor-alerta);
-    background: var(--cor-texto);
-    border-radius: 5px;
-    border: 1px solid var(--cor-primaria);
-}
-#modal #can:hover{
-    background: var(--cor-alerta);
-    color: var(--cor-clara-fundo);
-}
-#modal #Salvar{
-    padding: 3px;
-    border-radius: 5px;
-    color: chartreuse;
-    background: var(--cor-texto);
-    border: 1px solid var(--cor-primaria);
-}
-#modal #Salvar:hover{
-    background: var(--cor-sucesso);
-    color: var(--cor-clara-fundo);
-}
-
 * { box-sizing: border-box;
 margin: 0; padding: 0; }
 
 html { font-size: 16px; }
 
-.card img{
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
-    border-radius: 6px;
+body {
+    background: var(--cor-fundo);
+    font-family: system-ui, sans-serif;
+    color: var(--cor-texto);
+    line-height: 1.5;
 }
 
 button {
@@ -113,120 +40,6 @@ button {
 button:focus-visible{
     outline: 3px solid var(--cor-primaria);
     outline-offset: 2px;
-}
-
-body {
-    background: var(--cor-fundo);
-    font-family: system-ui, sans-serif;
-    color: var(--cor-texto);
-    line-height: 1.5;
-}
-
-
-.ativo{
-    background-color: var(--cor-escura);
-    color: var(--cor-clara);
-    border: 1px solid var(--cor-escura);
-}
-
-nav{
-    display: flex;
-    gap: 5px;
-    padding: 10px;
-    background: var(--cor-cabecalho);
-    border: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    button{
-        padding: 5px;
-        border-radius: 30px;
-        color: var(--cor-escura);
-        background-color: var(--cor-clara);
-        border: 2px solid var(--cor-escura);
-        font-weight: bold;
-    }
-
-}
-nav button:hover{
-    background-color: var(--cor-escura);
-    color: var(--cor-clara-fundo);
-}
-
-.acoes {
-    margin-top: auto;
-}
-
-.card  {
-    display: flex;
-    background: var(--cor-clara-fundo);
-    color: var(--cor-texto);
-    padding: var(--espaco);
-    border-radius: var(--raio);
-    border-top: 4px solid var(--cor-primaria);
-    border: 1px solid var(--cor-texto);
-    margin: 1rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    flex-direction: column;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-
-    #Edit{
-        background: var(--cor-primaria);
-        border: 1px solid var(--cor-media);
-        padding: 0.3%;
-        border-radius: 5px;
-        color: #FAC81B;
-        font-family: Roboto Mono;
-    }
-    #Remove{
-        color: var(--cor-alerta);
-        background: var(--cor-primaria);
-        border: 1px solid var(--cor-media);
-        padding: 0.3%;
-        border-radius: 5px;
-        font-family: Roboto Mono;
-    }
-
-}
-.card #Edit:hover{
-    background: var(--cor-cabecalho);
-}
-.card #Remove:hover{
-    background: var(--cor-alerta);
-    color: var(--cor-clara-fundo);
-}
-
-.status{
-    display: inline-block;
-    align-self: flex-start;
-    width: 130px;
-    text-align: center;
-    padding: 2px 10px;
-    margin-bottom: 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: var(--cor-clara-fundo);
-}
-.status.assistido{
-    background-color: var(--cor-sucesso);
-}
-.status.assistindo{
-    background-color: var(--cor-processo);
-}
-.status.quero{
-    background-color: var(--cor-clara);
-    color: var(--cor-escura);
-}
-
-.emBreve{
-    background-color: var(--cor-media);
-    border-radius: 5px;
-    padding: 5px;
-    font-family: Arial;
-    font-style: italic;
-    font-size: small;
-    font-weight: bold;
-    color: var(--cor-escura);
 }
 
 header{
@@ -278,6 +91,134 @@ header button:hover{
     background-color: var(--cor-media);
 }
 
+nav{
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    background: var(--cor-cabecalho);
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    button{
+        padding: 5px;
+        border-radius: 30px;
+        color: var(--cor-escura);
+        background-color: var(--cor-clara);
+        border: 2px solid var(--cor-escura);
+        font-weight: bold;
+    }
+
+}
+nav button:hover{
+    background-color: var(--cor-escura);
+    color: var(--cor-clara-fundo);
+}
+.ativo{
+    background-color: var(--cor-escura);
+    color: var(--cor-clara);
+    border: 1px solid var(--cor-escura);
+}
+
+#lista{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+@media (min-width: 1024px){
+    #lista{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.card  {
+    display: flex;
+    background: var(--cor-clara-fundo);
+    color: var(--cor-texto);
+    padding: var(--espaco);
+    border-radius: var(--raio);
+    border-top: 4px solid var(--cor-primaria);
+    border: 1px solid var(--cor-texto);
+    margin: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+
+    #Edit{
+        background: var(--cor-primaria);
+        border: 1px solid var(--cor-media);
+        padding: 0.3%;
+        border-radius: 5px;
+        color: #FAC81B;
+        font-family: Roboto Mono;
+    }
+    #Remove{
+        color: var(--cor-alerta);
+        background: var(--cor-primaria);
+        border: 1px solid var(--cor-media);
+        padding: 0.3%;
+        border-radius: 5px;
+        font-family: Roboto Mono;
+    }
+
+}
+.card img{
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.card #Edit:hover{
+    background: var(--cor-cabecalho);
+}
+.card #Remove:hover{
+    background: var(--cor-alerta);
+    color: var(--cor-clara-fundo);
+}
+
+.acoes {
+    margin-top: auto;
+}
+
+.status{
+    display: inline-block;
+    align-self: flex-start;
+    width: 130px;
+    text-align: center;
+    padding: 2px 10px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--cor-clara-fundo);
+}
+.status.assistido{
+    background-color: var(--cor-sucesso);
+}
+.status.assistindo{
+    background-color: var(--cor-processo);
+}
+.status.quero{
+    background-color: var(--cor-clara);
+    color: var(--cor-escura);
+}
+
+.emBreve{
+    background-color: var(--cor-media);
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial;
+    font-style: italic;
+    font-size: small;
+    font-weight: bold;
+    color: var(--cor-escura);
+}
+
+@media(max-width: 500px){
+    #addLabel{
+        display: none;
+    }
+}
+
 footer {
     display: flex;
     flex-direction: column;
@@ -296,31 +237,94 @@ footer {
     }
 
 }
-
-#lista{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-}
-
-@media (min-width: 1024px){
-    #lista{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media(max-width: 500px){
-    #addLabel{
-        display: none;
-    }
-}
-
 .addFooter{
     color: var(--cor-cabecalho);
 }
-
 .Voltar{
     color: var(--cor-link);
+}
+
+#modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+.modal-conteudo{
+    background: var(--cor-clara-fundo);
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow: auto;
+    animation: aparecer 200ms ease;
+}
+#modal[hidden]{display: none;}
+@keyframes aparecer {
+    from{
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#modal label{
+    font-weight: bold;
+}
+#modal input,
+#modal select,
+#modal textarea{
+    width: 100%;
+    padding: 6px;
+    border: 1px solid var(--cor-media);
+    border-radius: var(--raio);
+}
+.modal-conteudo button{
+    margin-top: 12px;
+    margin-right: 8px;
+}
+#modal #can{
+    padding: 3px;
+    color: var(--cor-alerta);
+    background: var(--cor-texto);
+    border-radius: 5px;
+    border: 1px solid var(--cor-primaria);
+}
+#modal #can:hover{
+    background: var(--cor-alerta);
+    color: var(--cor-clara-fundo);
+}
+#modal #Salvar{
+    padding: 3px;
+    border-radius: 5px;
+    color: chartreuse;
+    background: var(--cor-texto);
+    border: 1px solid var(--cor-primaria);
+}
+#modal #Salvar:hover{
+    background: var(--cor-sucesso);
+    color: var(--cor-clara-fundo);
+}
+
+figure{
+    margin: 2em 0;
+}
+figure img{
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--raio);
+    border: 1px solid var(--cor-texto);
+}
+figcaption{
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
 }
 
 .bodyAdd{
@@ -329,9 +333,9 @@ footer {
     color: var(--cor-texto);
     input{
         width: 250px;
-        
+
     }
-    
+
     #can{
         padding: 3px;
         color: var(--cor-alerta);
@@ -356,4 +360,3 @@ footer {
     background: var(--cor-sucesso);
     color: var(--cor-clara-fundo);
 }
-
