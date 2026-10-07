@@ -103,12 +103,36 @@ function renderizarCards(filmes){
 
             <span class="status ${f.status}">${rotuloStatus(f.status)}</span>
             <div class="acoes">
-                <button id="Edit">Editar</button>
-                <button id="Remove">Remover</button>
+                <button class="btn-editar">Editar</button>
+                <button class="btn-remover">Remover</button>
             </div>
         </article>`).join("")
     lista.innerHTML = cards
 }
 
+let filmes = [...filmesIniciais]
+
+lista.addEventListener("click", (e) => {
+    const botao = e.target.closest(".btn-remover")
+    if(!botao) return
+    if(!confirm("Remover este filme?")) return
+    const card = botao.closest(".card")
+    const id = Number(card.dataset.id)
+    filmes = filmes.filter((f) => f.id !== id)
+    renderizarCards(filmes)
+})
+
+const nav = document.querySelector("nav")
+
+nav.addEventListener("click", (e) => {
+    const botao = e.target.closest("button")
+    if(!botao) return
+    nav.querySelector(".ativo").classList.remove("ativo")
+    botao.classList.add("ativo")
+    const status = botao.dataset.status
+    renderizarCards(filmes.filter((f) =>
+        status === "todos" || f.status === status))
+})
+
 totalFilme()
-renderizarCards(filmesIniciais)
+renderizarCards(filmes)
