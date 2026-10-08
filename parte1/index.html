@@ -49,7 +49,7 @@
 
     </footer>
 
-    <div id="modal" hidden>
+    <div id="modal" class="modal" hidden >
         <div class="modal-conteudo">
             <h2>Adicionar Filme</h2>
             <form id="form-filme" action="/filmes" method="post">
@@ -66,13 +66,14 @@
                     <br><br>
 
                 <label for="urlPoster">URL do pôster</label><br>
-                    <input type="url" title="urlPoster" id="urlPoster" name="urlPoster" placeholder="...">
+                    <input type="url" title="urlPoster" id="urlPoster" name="poster" placeholder="...">
                     <br><br>
 
                     <label for="status">Status</label><br>
                     <select name="status" id="status" required >
 
-                        <option value="queroAssistir">Quero assistir</option>
+                        <option value="quero">Quero assistir</option>
+                        <option value="assistindo">Assistindo</option>
                         <option value="assistido">Assistido</option>
                     </select><br><br>
 
@@ -82,10 +83,9 @@
 
                 <label for="comentario">Comentário</label><br>
                 <textarea name="comentario" id="comentario" rows="4" cols="50"></textarea><br><br>
+                <button type="button" id="can" class="btn-cancelar">Cancelar</button>
+                <button type="submit" id="Salvar" class="btn-salvar">Salvar</button>
             </form>
-
-            <button type="button" id="can">Cancelar</button>
-            <button type="submit" id="Salvar">Salvar</button>
         </div>
     </div>
 
