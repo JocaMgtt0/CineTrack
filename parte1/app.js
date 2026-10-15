@@ -19,15 +19,12 @@ const estrelas = (nota) => {
 }
 console.log(rotuloStatus("quero"), estrelas(3))
 
-const total = 6
-
 const POSTER_PADRAO = "https://placehold.co/200x300?text=Sem+poster"
 
-// Acrescenta o total de filmes ao texto do rodapé
+// Atualiza o rodapé com o total de filmes da lista
 const totalFilme = () => {
-    const textoNovo = `- Total de filmes: ${total}`
-    document.querySelector(".rodape").textContent += textoNovo
-
+    document.querySelector(".rodape small").textContent =
+        `CineTrack - UEM - Total de filmes: ${filmes.length}`
 }
 
 const filmesIniciais = [
@@ -195,6 +192,7 @@ function atualizar(){
     const visiveis = aplicarFiltros(filmes,
         { termo: termoAtual, status: statusAtual })
     renderizarCards(visiveis)
+    totalFilme()
 }
 
 // Adia a execução de fn até o usuário parar de digitar por ms milissegundos
@@ -306,5 +304,4 @@ form.addEventListener("submit", (e) => {
     fechar()
 })
 
-totalFilme()
 atualizar()
