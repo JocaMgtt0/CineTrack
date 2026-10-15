@@ -21,6 +21,8 @@ console.log(rotuloStatus("quero"), estrelas(3))
 
 const total = 6
 
+const POSTER_PADRAO = "https://placehold.co/200x300?text=Sem+poster"
+
 // Acrescenta o total de filmes ao texto do rodapé
 const totalFilme = () => {
     const textoNovo = `- Total de filmes: ${total}`
@@ -100,7 +102,7 @@ function criarCard(f){
     card.dataset.id = f.id
 
     const poster = document.createElement("img")
-    poster.src = f.poster
+    poster.src = f.poster || POSTER_PADRAO
     poster.alt = `Pôster de ${f.titulo}`
     poster.width = 300
 
