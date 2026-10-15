@@ -1,3 +1,4 @@
+// Devolve o rótulo de exibição de um status, ou o próprio valor se for desconhecido
 function rotuloStatus(status){
     if(status === "assistido") return "Assistido"
     if(status === "assistindo") {
@@ -7,6 +8,7 @@ function rotuloStatus(status){
     return status
 }
 
+// Devolve a nota como 5 estrelas, cheias até a nota e vazias no resto
 const estrelas = (nota) => {
     let notaFinal = ''
     for(let i = 1; i <=5; i++){
@@ -19,6 +21,7 @@ console.log(rotuloStatus("quero"), estrelas(3))
 
 const total = 6
 
+// Acrescenta o total de filmes ao texto do rodapé
 const totalFilme = () => {
     const textoNovo = `- Total de filmes: ${total}`
     document.querySelector(".rodape").textContent += textoNovo
