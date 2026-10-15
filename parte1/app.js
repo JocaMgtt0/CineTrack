@@ -149,6 +149,8 @@ function validarFilme(filme){
         erros.push("Título obrigatório")
     if(filme.ano < 1888 || filme.ano > 2030)
         erros.push("Ano inválido")
+    if(filme.nota < 1 || filme.nota > 5)
+        erros.push("Nota deve estar entre 1 e 5")
     return { valido: erros.length === 0, erros }
 }
 
