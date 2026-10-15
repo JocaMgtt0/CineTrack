@@ -153,7 +153,51 @@ function validarFilme(filme){
 const gerarId = (lista) =>
     Math.max(0, ...lista.map((f) => f.id)) + 1
 
-let filmes = [...filmesIniciais]
+const CHAVE = "cinetrack:filmes"
+
+// Grava a lista de filmes no localStorage como JSON
+const salvar = () =>
+    localStorage.setItem(CHAVE,
+        JSON.stringify(filmes))
+
+// Lê a lista salva no localStorage ou devolve os filmes iniciais na primeira visita
+function carregar(){
+    const txt = localStorage.getItem(CHAVE)
+    return txt
+        ? JSON.parse(txt)
+        : [...filmesIniciais]
+}
+
+let filmes = carregar()
+
+let termoAtual = ""
+let statusAtual = "todos"
+
+// Filtra a lista pelo título digitado e pelo status escolhido, sem mutar a original
+function aplicarFiltros(lista, opcoes){
+    const termo = opcoes.termo.toLowerCase()
+    return lista
+        .filter((f) =>
+            f.titulo.toLowerCase().includes(termo))
+        .filter((f) => opcoes.status === "todos"
+            || f.status === opcoes.status)
+}
+
+// Aplica busca e filtro de status e renderiza o resultado na tela
+function atualizar(){
+    const visiveis = aplicarFiltros(filmes,
+        { termo: termoAtual, status: statusAtual })
+    renderizarCards(visiveis)
+}
+
+// Adia a execução de fn até o usuário parar de digitar por ms milissegundos
+function debounce(fn, ms = 300){
+    let timer
+    return (...args) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => fn(...args), ms)
+    }
+}
 
 lista.addEventListener("click", (e) => {
     const botao = e.target.closest(".btn-remover")
@@ -162,7 +206,8 @@ lista.addEventListener("click", (e) => {
     const card = botao.closest(".card")
     const id = Number(card.dataset.id)
     filmes = filmes.filter((f) => f.id !== id)
-    renderizarCards(filmes)
+    salvar()
+    atualizar()
 })
 
 const nav = document.querySelector("nav")
@@ -172,10 +217,19 @@ nav.addEventListener("click", (e) => {
     if(!botao) return
     nav.querySelector(".ativo").classList.remove("ativo")
     botao.classList.add("ativo")
-    const status = botao.dataset.status
-    renderizarCards(filmes.filter((f) =>
-        status === "todos" || f.status === status))
+    statusAtual = botao.dataset.status
+    atualizar()
 })
+
+const busca = document.querySelector("header input")
+
+const aoDigitar = (e) => {
+    termoAtual = e.target.value
+    atualizar()
+}
+
+busca.addEventListener("input",
+    debounce(aoDigitar, 300))
 
 // Abre modal de adicionar filme clicando em 'Adicionar'
 let editandoID = null 
@@ -204,13 +258,6 @@ document.addEventListener("click", (e) => {
     if(!botao) return
     fechar()
 })
-
-
-
-
-
-
-
 
 
 // Preenche o formulário com o filme do card clicado e abre o modal em modo de edição
@@ -247,9 +294,10 @@ form.addEventListener("submit", (e) => {
     } else {
         filmes = [...filmes, { id: gerarId(filmes), ...dados }]
     }
-    renderizarCards(filmes)
+    salvar()
+    atualizar()
     fechar()
 })
 
 totalFilme()
-renderizarCards(filmes)
+atualizar()
