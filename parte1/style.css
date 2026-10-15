@@ -112,6 +112,15 @@ nav button:hover{
     background-color: var(--cor-escura);
     color: var(--cor-clara-fundo);
 }
+nav select{
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 30px;
+    color: var(--cor-escura);
+    background-color: var(--cor-clara);
+    border: 2px solid var(--cor-escura);
+    font-weight: bold;
+}
 .ativo{
     background-color: var(--cor-escura);
     color: var(--cor-clara);

@@ -176,6 +176,7 @@ let filmes = carregar()
 
 let termoAtual = ""
 let statusAtual = "todos"
+let ordemAtual = "padrao"
 
 // Filtra a lista pelo título digitado e pelo status escolhido, sem mutar a original
 function aplicarFiltros(lista, opcoes){
@@ -187,11 +188,23 @@ function aplicarFiltros(lista, opcoes){
             || f.status === opcoes.status)
 }
 
-// Aplica busca e filtro de status e renderiza o resultado na tela
+// Devolve uma cópia da lista ordenada por título, ano ou nota, sem mutar a original
+function ordenarFilmes(lista, criterio){
+    const copia = [...lista]
+    if(criterio === "titulo")
+        return copia.sort((a, b) => a.titulo.localeCompare(b.titulo))
+    if(criterio === "ano")
+        return copia.sort((a, b) => b.ano - a.ano)
+    if(criterio === "nota")
+        return copia.sort((a, b) => b.nota - a.nota)
+    return copia
+}
+
+// Aplica busca, filtro de status e ordem escolhida e renderiza o resultado na tela
 function atualizar(){
     const visiveis = aplicarFiltros(filmes,
         { termo: termoAtual, status: statusAtual })
-    renderizarCards(visiveis)
+    renderizarCards(ordenarFilmes(visiveis, ordemAtual))
     totalFilme()
 }
 
@@ -223,6 +236,13 @@ nav.addEventListener("click", (e) => {
     nav.querySelector(".ativo").classList.remove("ativo")
     botao.classList.add("ativo")
     statusAtual = botao.dataset.status
+    atualizar()
+})
+
+const ordenar = document.querySelector("#ordenar")
+
+ordenar.addEventListener("change", (e) => {
+    ordemAtual = e.target.value
     atualizar()
 })
 
