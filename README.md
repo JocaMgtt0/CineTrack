@@ -30,6 +30,7 @@ Os filmes ficam salvos no `localStorage` do navegador, na chave `cinetrack:filme
 - Na primeira visita, carrega os 6 filmes de exemplo do enunciado.
 - Pôster com texto alternativo e imagem padrão quando a URL fica vazia.
 - Tema com variáveis CSS e dark mode automático (`prefers-color-scheme`).
+- Acessibilidade: nota 100 no Lighthouse, tanto no desktop quanto no mobile.
 - Página Sobre (`parte1/sobre.html`).
 
 O roteiro de testes executado na entrega está em [docs/testes-parte1.md](docs/testes-parte1.md).
