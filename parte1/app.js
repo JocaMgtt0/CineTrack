@@ -240,7 +240,11 @@ busca.addEventListener("input",
 let editandoID = null 
 const modal = document.querySelector('#modal')
 const form = document.querySelector('#form-filme')
-const abrir = () => modal.hidden = false
+const msgErros = document.querySelector('#erros-form')
+const abrir = () => {
+    msgErros.textContent = ""
+    modal.hidden = false
+}
 const fechar = () => modal.hidden = true
 document.querySelector("header button")
     .addEventListener("click", ()=> {
@@ -290,7 +294,7 @@ form.addEventListener("submit", (e) => {
     dados.nota = Number(dados.nota)
     const { valido, erros } = validarFilme(dados)
     if(!valido){
-        alert(erros.join("\n"))
+        msgErros.textContent = erros.join("\n")
         return
     }
     if(editandoID !== null){

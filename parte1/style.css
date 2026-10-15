@@ -289,6 +289,10 @@ footer {
     margin-top: 12px;
     margin-right: 8px;
 }
+#erros-form{
+    color: var(--cor-alerta);
+    white-space: pre-line;
+}
 #modal #can{
     padding: 3px;
     color: var(--cor-alerta);
