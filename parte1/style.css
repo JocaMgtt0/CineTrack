@@ -2,10 +2,13 @@
     --cor-primaria: #4a4e69;
     --cor-cabecalho: #2f3e46;
     --cor-escura: #22223b;
-    --cor-clara: #7f8595;
-    --cor-media: #7f8a95;
+    --cor-clara: #8e94a4;
+    --cor-media: #8a95a0;
+    --cor-titulo: #aab0c0;
     --cor-alerta: #a93528;
-    --cor-link: #3bd1fa;
+    --cor-alerta-claro: #ffb3aa;
+    --cor-link: #0a6c91;
+    --cor-texto-escuro: #353038;
     --cor-clara-fundo: #ffffff;
     --cor-sucesso: #2e7d32;
     --cor-processo: #1a73e8;
@@ -16,7 +19,8 @@
 }
 @media(prefers-color-scheme: dark){
     :root{
-        --cor-fundo: #353038; --cor-texto:#7f8a95;
+        --cor-fundo: #353038; --cor-texto:#c5ccd3;
+        --cor-link: #3bd1fa;
     }
 }
 
@@ -65,7 +69,7 @@ header{
         border-radius: 10px;
     }
     h1{
-        color: var(--cor-clara);
+        color: var(--cor-titulo);
         flex: 0 0 auto;
     }
     input{
@@ -141,7 +145,7 @@ nav select{
 .card  {
     display: flex;
     background: var(--cor-clara-fundo);
-    color: var(--cor-texto);
+    color: var(--cor-texto-escuro);
     padding: var(--espaco);
     border-radius: var(--raio);
     border-top: 4px solid var(--cor-primaria);
@@ -160,7 +164,7 @@ nav select{
         color: #FAC81B;
     }
     .btn-remover{
-        color: var(--cor-alerta);
+        color: var(--cor-alerta-claro);
         background: var(--cor-primaria);
         border: 1px solid var(--cor-media);
         padding: 6px 14px;
@@ -234,7 +238,7 @@ footer {
     align-items: center;
     justify-content: center;
     padding-top: 1%;
-    color: #ccc;
+    color: var(--cor-texto);
     padding: 1.5rem;
     text-align: center;
     font-size: 0.9rem;
@@ -247,7 +251,10 @@ footer {
 
 }
 .addFooter{
-    color: var(--cor-cabecalho);
+    color: var(--cor-escura);
+}
+footer > .addFooter{
+    color: var(--cor-link);
 }
 .Voltar{
     color: var(--cor-link);
@@ -264,6 +271,7 @@ footer {
 }
 .modal-conteudo{
     background: var(--cor-clara-fundo);
+    color: var(--cor-texto-escuro);
     padding: 24px;
     border-radius: 12px;
     width: 100%;
@@ -304,8 +312,8 @@ footer {
 }
 #modal #can{
     padding: 3px;
-    color: var(--cor-alerta);
-    background: var(--cor-texto);
+    color: var(--cor-alerta-claro);
+    background: var(--cor-escura);
     border-radius: 5px;
     border: 1px solid var(--cor-primaria);
 }
@@ -317,7 +325,7 @@ footer {
     padding: 3px;
     border-radius: 5px;
     color: chartreuse;
-    background: var(--cor-texto);
+    background: var(--cor-escura);
     border: 1px solid var(--cor-primaria);
 }
 #modal #Salvar:hover{
@@ -347,8 +355,8 @@ figcaption{
 
     #can{
         padding: 3px;
-        color: var(--cor-alerta);
-        background: var(--cor-texto);
+        color: var(--cor-alerta-claro);
+        background: var(--cor-escura);
         border-radius: 5px;
         border: 1px solid var(--cor-primaria);
     }
@@ -365,6 +373,7 @@ figcaption{
     max-width: 480px;
     margin: 2em auto;
     background: var(--cor-clara-fundo);
+    color: var(--cor-texto-escuro);
     padding: 24px;
     border-radius: var(--raio);
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
