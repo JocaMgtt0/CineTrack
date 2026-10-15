@@ -155,18 +155,16 @@ nav select{
     .btn-editar{
         background: var(--cor-primaria);
         border: 1px solid var(--cor-media);
-        padding: 0.3%;
+        padding: 6px 14px;
         border-radius: 5px;
         color: #FAC81B;
-        font-family: Roboto Mono;
     }
     .btn-remover{
         color: var(--cor-alerta);
         background: var(--cor-primaria);
         border: 1px solid var(--cor-media);
-        padding: 0.3%;
+        padding: 6px 14px;
         border-radius: 5px;
-        font-family: Roboto Mono;
     }
 
 }
@@ -185,6 +183,8 @@ nav select{
 }
 
 .acoes {
+    display: flex;
+    gap: 8px;
     margin-top: auto;
 }
 
