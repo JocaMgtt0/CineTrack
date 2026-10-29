@@ -1,11 +1,21 @@
-// Inicia os filtros iniciais
-export default function Filtros(){
+const STATUS = [
+    { valor: "todos", rotulo: "Todos" },
+    { valor: "assistido", rotulo: "Assistido" },
+    { valor: "assistindo", rotulo: "Assistindo" },
+    { valor: "quero", rotulo: "Quero assistir" }
+]
+
+// Mostra os botões de status e avisa o App qual foi escolhido
+export default function Filtros({ ativo, aoMudar }){
     return (
         <nav>
-            <button className="ativo">Todos</button>
-            <button>Assistido</button>
-            <button>Assistindo</button>
-            <button>Quero assistir</button>
+            {STATUS.map((s) => (
+                <button key={s.valor}
+                    className={ativo === s.valor ? "ativo" : ""}
+                    onClick={() => aoMudar(s.valor)}>
+                    {s.rotulo}
+                </button>
+            ))}
         </nav>
     )
 }
