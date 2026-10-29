@@ -1,14 +1,5 @@
-// Gera estrelas para as notas
-function estrelas(nota){
-    return "★".repeat(nota) + 
-        "✩".repeat(5- nota);
-}
-
-const ROTULOS = {
-    assistido: "Assistido",
-    assistindo: "Assistindo",
-    quero: "Quero Assistir" 
-}
+import Estrelas from "./Estrelas.jsx"
+import Badge from "./Badge.jsx"
 
 //Cria o filme dentro do card
 export default function CardFilme({filme}){
@@ -17,8 +8,8 @@ export default function CardFilme({filme}){
             <img src={filme.poster} alt={`Pôster de ${filme.titulo}`}/>
             <h2>{filme.titulo}</h2>
             <p>{filme.ano} {filme.genero}</p>
-            <p>{estrelas(filme.nota)}</p>
-            <p>{ROTULOS[filme.status]}</p>
+            <p><Estrelas nota={filme.nota} /></p>
+            <Badge status={filme.status} />
             <p>{filme.comentario}</p>
         </article>
     )
