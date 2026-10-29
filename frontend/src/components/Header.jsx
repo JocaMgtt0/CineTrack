@@ -1,12 +1,12 @@
 // Cria o header do projeto com o campo de busca controlado
-export default function Header({ busca, aoBuscar }){
+export default function Header({ busca, aoBuscar, aoAdicionar }){
     return (
         <header>
             <h1>CineTrack</h1>
             <input placeholder="Buscar filme..."
                 value={busca}
                 onChange={(e) => aoBuscar(e.target.value)} />
-            <button>+ Adicionar</button>
+            <button onClick={aoAdicionar}>+ Adicionar</button>
         </header>
     )
 }

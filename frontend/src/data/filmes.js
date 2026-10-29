@@ -60,3 +60,8 @@ export const filmesIniciais = [
         comentario: ""
     }
 ]
+
+// Gera um id novo: o maior id da lista mais 1, ou 1 com a lista vazia
+export function gerarId(lista){
+    return Math.max(0, ...lista.map((f) => f.id)) + 1
+}
