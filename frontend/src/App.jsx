@@ -6,13 +6,26 @@ import Filtros from "./components/Filtros.jsx"
 import ListaFilmes from "./components/ListaFilmes.jsx"
 import ModalFilme from "./components/ModalFilme.jsx"
 
+const CHAVE_FILTROS = "cinetrack:filtros"
+
+// Lê os filtros salvos; se a chave faltar ou o JSON estiver corrompido, devolve os padrões
+function lerFiltros() {
+  const padroes = { busca: "", status: "todos" }
+  try {
+    return { ...padroes, ...JSON.parse(localStorage.getItem(CHAVE_FILTROS)) }
+  } catch (e) {
+    console.error(e)
+    return padroes
+  }
+}
+
 // Componente raiz: guarda filmes, filtros e modal e calcula os filmes visíveis
 export default function App() {
   const [filmes, setFilmes] = useState([])
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
-  const [status, setStatus] = useState("todos")
-  const [busca, setBusca] = useState("")
+  const [status, setStatus] = useState(() => lerFiltros().status)
+  const [busca, setBusca] = useState(() => lerFiltros().busca)
   const [editando, setEditando] = useState(null)
 
   // Carrega os filmes da API uma vez, depois do primeiro render
@@ -27,6 +40,11 @@ export default function App() {
   useEffect(() => {
     document.title = `CineTrack (${filmes.length})`
   }, [filmes.length])
+
+  // Salva a busca e o status no localStorage sempre que um dos dois mudar
+  useEffect(() => {
+    localStorage.setItem(CHAVE_FILTROS, JSON.stringify({ busca, status }))
+  }, [busca, status])
 
   const visiveis = filmes
     .filter((filme) =>
