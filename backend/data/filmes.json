@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "titulo": "A Origem",
+    "ano": 2010,
+    "genero": "Ficção científica",
+    "nota": 5,
+    "status": "assistido",
+    "comentario": "Revejo sempre.",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg"
+  },
+  {
+    "id": 2,
+    "titulo": "Parasita",
+    "ano": 2019,
+    "genero": "Suspense",
+    "nota": 4,
+    "status": "assistido",
+    "comentario": "",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/bNGW8zYA91VqTZfV3jnKHPEKKvB.jpg"
+  },
+  {
+    "id": 3,
+    "titulo": "O Auto da Compadecida",
+    "ano": 2000,
+    "genero": "Comédia",
+    "nota": 5,
+    "status": "assistido",
+    "comentario": "Classico nacional.",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/y3IhuITELtprMhUd7bccu629rba.jpg"
+  },
+  {
+    "id": 4,
+    "titulo": "Duna: Parte Dois",
+    "ano": 2024,
+    "genero": "Ficção científica",
+    "nota": 4,
+    "status": "assistindo",
+    "comentario": "",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/VMy4UGsI2u3f4fALGeCqCdsQBb.jpg"
+  },
+  {
+    "id": 5,
+    "titulo": "Interestelar",
+    "ano": 2014,
+    "genero": "Ficção científica",
+    "nota": 5,
+    "status": "quero",
+    "comentario": "",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg"
+  },
+  {
+    "id": 6,
+    "titulo": "Cidade de Deus",
+    "ano": 2002,
+    "genero": "Drama",
+    "nota": 4,
+    "status": "quero",
+    "comentario": "",
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg"
+  }
+]
