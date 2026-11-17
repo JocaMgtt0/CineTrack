@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
-import { gerarId } from "./data/filmes.js"
-import { listar } from "./api.js"
+import { listar, criar, atualizar, remover } from "./api.js"
 import Header from "./components/Header.jsx"
 import Filtros from "./components/Filtros.jsx"
 import ListaFilmes from "./components/ListaFilmes.jsx"
@@ -55,36 +54,33 @@ export default function App() {
         .toLowerCase()
         .includes(busca.toLowerCase()))
 
-  // Inclui um filme novo com id gerado, sem mutar a lista
-  function adicionar(novoFilme) {
-    setFilmes((anteriores) => [
-      ...anteriores,
-      {
-        ...novoFilme,
-        id: gerarId(anteriores),
-      },
-    ])
+  // Cadastra o filme na API e inclui na lista o filme devolvido, já com id
+  async function adicionar(novoFilme) {
+    const novo = await criar(novoFilme)
+    setFilmes((anteriores) => [...anteriores, novo])
   }
 
-  // Remove o filme do id informado, mantendo os demais
-  function remover(id) {
+  // Remove o filme na API e só depois tira ele da lista
+  async function removerFilme(id) {
+    await remover(id)
     setFilmes((anteriores) =>
       anteriores.filter((filme) => filme.id !== id))
   }
 
-  // Troca só o filme do id informado por uma cópia com as alterações
-  function editar(id, alteracoes) {
+  // Atualiza o filme na API e troca na lista pela versão devolvida
+  async function editar(id, alteracoes) {
+    const atualizado = await atualizar(id, alteracoes)
     setFilmes((anteriores) =>
       anteriores.map((filme) =>
-        filme.id === id ? { ...filme, ...alteracoes } : filme))
+        filme.id === id ? atualizado : filme))
   }
 
   // Decide entre incluir e editar pelo id do filme aberto e fecha o modal
-  function salvar(dados) {
+  async function salvar(dados) {
     if (editando.id) {
-      editar(editando.id, dados)
+      await editar(editando.id, dados)
     } else {
-      adicionar(dados)
+      await adicionar(dados)
     }
 
     setEditando(null)
@@ -100,7 +96,7 @@ export default function App() {
       <ListaFilmes
         filmes={visiveis}
         aoEditar={setEditando}
-        aoRemover={remover}
+        aoRemover={removerFilme}
       />
     )
   }

@@ -8,7 +8,7 @@ O CineTrack é um catálogo pessoal de filmes que estou construindo na disciplin
 - RA: 139413
 - Trabalho feito individualmente
 
-## Como executar
+## Como executar a parte 1
 
 A parte 1 não precisa de instalação, de servidor nem de banco de dados.
 
@@ -16,6 +16,29 @@ A parte 1 não precisa de instalação, de servidor nem de banco de dados.
 2. Abra o arquivo `parte1/index.html` no navegador (clique duas vezes nele) ou, se preferir, use a extensão Live Server do VS Code.
 
 Os filmes ficam salvos no `localStorage` do navegador, na chave `cinetrack:filmes`. Para voltar aos 6 filmes iniciais, apague essa chave (F12, aba Application, Local Storage) e recarregue a página.
+
+## Como rodar o backend
+
+O backend é uma API feita com Node e Express, que guarda os filmes no arquivo `backend/data/filmes.json`. Precisa do Node 20.6 ou mais novo, por causa da opção `--env-file`.
+
+1. Entre na pasta: `cd backend`
+2. Instale as dependências: `npm install`
+3. Crie o `.env` a partir do exemplo: `cp .env.example .env` (no Prompt de Comando do Windows: `copy .env.example .env`). Sem esse arquivo o servidor não sobe.
+4. Grave os 6 filmes iniciais: `npm run seed`
+5. Suba a API: `npm run dev` (ou `npm start`, sem recarga automática)
+
+A API fica em `http://localhost:3000`. Pra conferir, abra `http://localhost:3000/filmes` no navegador.
+
+## Como rodar o frontend
+
+Com a API no ar, abra outro terminal na raiz do repositório:
+
+1. Entre na pasta: `cd frontend`
+2. Instale as dependências: `npm install`
+3. Suba o Vite: `npm run dev`
+4. Abra `http://localhost:5173` no navegador.
+
+Pra gerar a versão de produção, rode `npm run build` dentro de `frontend/`. Os arquivos saem em `frontend/dist/`.
 
 ## O que funciona
 
