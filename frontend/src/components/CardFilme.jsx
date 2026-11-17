@@ -1,11 +1,13 @@
 import Estrelas from "./Estrelas.jsx"
 import Badge from "./Badge.jsx"
 
+const POSTER_PADRAO = "https://placehold.co/200x300?text=Sem+poster"
+
 //Cria o filme dentro do card
 export default function CardFilme({filme, aoEditar, aoRemover}){
     return (
         <article className="card">
-            <img src={filme.poster} alt={`Pôster de ${filme.titulo}`}/>
+            <img src={filme.poster || POSTER_PADRAO} alt={`Pôster de ${filme.titulo}`}/>
             <h2>{filme.titulo}</h2>
             <p>{filme.ano} {filme.genero}</p>
             <p><Estrelas nota={filme.nota} /></p>
