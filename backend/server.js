@@ -28,6 +28,22 @@ function gerarId(lista) {
   return Math.max(0, ...ids) + 1
 }
 
+const STATUS = ["assistido", "assistindo", "quero"]
+
+// Confere os campos do filme e devolve a lista com todos os problemas encontrados
+function validarFilme(filme) {
+  const erros = []
+  if (!filme.titulo)
+    erros.push("título é obrigatório")
+  if (!filme.ano || filme.ano < 1888 || filme.ano > 2030)
+    erros.push("ano deve estar entre 1888 e 2030")
+  if (!filme.nota || filme.nota < 1 || filme.nota > 5)
+    erros.push("nota deve estar entre 1 e 5")
+  if (!STATUS.includes(filme.status))
+    erros.push("status deve ser assistido, assistindo ou quero")
+  return erros
+}
+
 app.get("/filmes", (req, res) => {
   let lista = lerFilmes()
   if (req.query.status)
@@ -47,9 +63,9 @@ app.get("/filmes/:id", (req, res) => {
 })
 
 app.post("/filmes", (req, res) => {
-  const dados = req.body
-  if (!dados.titulo || !dados.ano)
-    return res.status(400).json({ erro: "Dados obrigatórios" })
+  const dados = req.body || {}
+  const erros = validarFilme(dados)
+  if (erros.length > 0) return res.status(400).json({ erros })
   const lista = lerFilmes()
   const novo = { ...dados, id: gerarId(lista) }
   lista.push(novo)
@@ -62,7 +78,10 @@ app.put("/filmes/:id", (req, res) => {
   const lista = lerFilmes()
   const i = lista.findIndex((f) => f.id === id)
   if (i === -1) return res.status(404).json({ erro: "Filme não encontrado" })
-  lista[i] = { ...lista[i], ...req.body, id }
+  const atualizado = { ...lista[i], ...req.body, id }
+  const erros = validarFilme(atualizado)
+  if (erros.length > 0) return res.status(400).json({ erros })
+  lista[i] = atualizado
   salvarFilmes(lista)
   res.json(lista[i])
 })
