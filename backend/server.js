@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const morgan = require("morgan")
 const fs = require("fs")
 const path = require("path")
@@ -7,12 +8,24 @@ const app = express()
 
 const ARQUIVO = path.join(__dirname, "data", "filmes.json")
 
+app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())
 
 // Lê a lista de filmes do arquivo JSON
 function lerFilmes() {
   return JSON.parse(fs.readFileSync(ARQUIVO, "utf8"))
+}
+
+// Grava a lista inteira de filmes no arquivo JSON
+function salvarFilmes(lista) {
+  fs.writeFileSync(ARQUIVO, JSON.stringify(lista, null, 2))
+}
+
+// Gera um id novo: o maior id da lista mais 1
+function gerarId(lista) {
+  const ids = lista.map((filme) => filme.id)
+  return Math.max(0, ...ids) + 1
 }
 
 app.get("/filmes", (req, res) => {
@@ -31,6 +44,36 @@ app.get("/filmes/:id", (req, res) => {
   const filme = lerFilmes().find((f) => f.id === id)
   if (!filme) return res.status(404).json({ erro: "Filme não encontrado" })
   res.json(filme)
+})
+
+app.post("/filmes", (req, res) => {
+  const dados = req.body
+  if (!dados.titulo || !dados.ano)
+    return res.status(400).json({ erro: "Dados obrigatórios" })
+  const lista = lerFilmes()
+  const novo = { ...dados, id: gerarId(lista) }
+  lista.push(novo)
+  salvarFilmes(lista)
+  res.status(201).json(novo)
+})
+
+app.put("/filmes/:id", (req, res) => {
+  const id = Number(req.params.id)
+  const lista = lerFilmes()
+  const i = lista.findIndex((f) => f.id === id)
+  if (i === -1) return res.status(404).json({ erro: "Filme não encontrado" })
+  lista[i] = { ...lista[i], ...req.body, id }
+  salvarFilmes(lista)
+  res.json(lista[i])
+})
+
+app.delete("/filmes/:id", (req, res) => {
+  const id = Number(req.params.id)
+  const lista = lerFilmes()
+  if (!lista.some((f) => f.id === id))
+    return res.status(404).json({ erro: "Filme não encontrado" })
+  salvarFilmes(lista.filter((f) => f.id !== id))
+  res.sendStatus(204)
 })
 
 // Conta quantos filmes existem em cada status
@@ -56,4 +99,5 @@ app.get("/stats", (req, res) => {
   })
 })
 
-app.listen(3000, () => console.log("API na porta 3000"))
+const porta = process.env.PORT || 3000
+app.listen(porta, () => console.log(`API na porta ${porta}`))
