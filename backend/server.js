@@ -103,8 +103,9 @@ function contagemPorStatus(lista) {
   }, {})
 }
 
-// Calcula a média das notas com uma casa decimal
+// Calcula a média das notas com uma casa decimal; sem filmes, a média é 0
 function mediaNotas(lista) {
+  if (lista.length === 0) return 0
   const soma = lista.reduce((total, filme) => total + filme.nota, 0)
   return Math.round((soma / lista.length) * 10) / 10
 }
