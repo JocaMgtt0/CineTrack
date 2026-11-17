@@ -90,7 +90,7 @@ export default function App() {
   if (carregando) {
     conteudo = <p>Carregando...</p>
   } else if (erro) {
-    conteudo = <p className="erro">Erro: {erro}</p>
+    conteudo = <p className="erro">Não foi possível carregar os filmes. {erro}</p>
   } else {
     conteudo = (
       <ListaFilmes

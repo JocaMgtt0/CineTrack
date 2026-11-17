@@ -1,12 +1,20 @@
 const BASE = "http://localhost:3000"
 
-// Faz a requisição na API: erro de HTTP vira exceção e o 204 devolve null
+// Faz a requisição na API: falha de rede e erro de HTTP viram exceção com a mensagem pro usuário, e o 204 devolve null
 async function pedir(caminho, opcoes = {}) {
-  const r = await fetch(BASE + caminho, {
-    headers: { "Content-Type": "application/json" },
-    ...opcoes,
-  })
-  if (!r.ok) throw new Error(`HTTP ${r.status}`)
+  let r
+  try {
+    r = await fetch(BASE + caminho, {
+      headers: { "Content-Type": "application/json" },
+      ...opcoes,
+    })
+  } catch {
+    throw new Error("Sem conexão com a API. Confira se o backend está rodando.")
+  }
+  if (!r.ok) {
+    const corpo = await r.json()
+    throw new Error(corpo.erros ? corpo.erros.join("\n") : corpo.erro)
+  }
   return r.status === 204 ? null : r.json()
 }
 

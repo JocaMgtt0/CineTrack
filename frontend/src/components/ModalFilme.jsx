@@ -16,6 +16,7 @@ export default function ModalFilme({ filme, aoSalvar, aoFechar }){
         ...VAZIO,
         ...filme
     })
+    const [erro, setErro] = useState("")
 
     // Atualiza um campo do formulário sem mutar o objeto de estado
     function atualizar(campo, valor){
@@ -25,14 +26,18 @@ export default function ModalFilme({ filme, aoSalvar, aoFechar }){
         }))
     }
 
-    // Impede a recarga da página e entrega os dados com ano e nota como números
-    function submeter(evento){
+    // Impede a recarga da página, entrega os dados com ano e nota como números e mostra no modal o erro da API
+    async function submeter(evento){
         evento.preventDefault()
-        aoSalvar({
-            ...dados,
-            ano: Number(dados.ano),
-            nota: Number(dados.nota)
-        })
+        try {
+            await aoSalvar({
+                ...dados,
+                ano: Number(dados.ano),
+                nota: Number(dados.nota)
+            })
+        } catch (e) {
+            setErro(e.message)
+        }
     }
 
     return (
@@ -78,6 +83,8 @@ export default function ModalFilme({ filme, aoSalvar, aoFechar }){
                     <textarea id="comentario" rows="4"
                         value={dados.comentario}
                         onChange={(e) => atualizar("comentario", e.target.value)} />
+
+                    <p id="erros-form" aria-live="polite">{erro}</p>
 
                     <button type="button" id="can" onClick={aoFechar}>Cancelar</button>
                     <button type="submit" id="Salvar">Salvar</button>
