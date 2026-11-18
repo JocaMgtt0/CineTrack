@@ -60,8 +60,9 @@ export default function App() {
     setFilmes((anteriores) => [...anteriores, novo])
   }
 
-  // Remove o filme na API e só depois tira ele da lista
+  // Pede confirmação, remove o filme na API e só depois tira ele da lista
   async function removerFilme(id) {
+    if (!confirm("Remover este filme?")) return
     await remover(id)
     setFilmes((anteriores) =>
       anteriores.filter((filme) => filme.id !== id))
