@@ -26,6 +26,7 @@ export default function App() {
   const [status, setStatus] = useState(() => lerFiltros().status)
   const [busca, setBusca] = useState(() => lerFiltros().busca)
   const [editando, setEditando] = useState(null)
+  const [aviso, setAviso] = useState("")
 
   // Carrega os filmes da API uma vez, depois do primeiro render
   useEffect(() => {
@@ -60,12 +61,17 @@ export default function App() {
     setFilmes((anteriores) => [...anteriores, novo])
   }
 
-  // Pede confirmação, remove o filme na API e só depois tira ele da lista
+  // Pede confirmação, remove o filme na API e só depois tira ele da lista; se a API falhar, mostra o aviso
   async function removerFilme(id) {
     if (!confirm("Remover este filme?")) return
-    await remover(id)
-    setFilmes((anteriores) =>
-      anteriores.filter((filme) => filme.id !== id))
+    setAviso("")
+    try {
+      await remover(id)
+      setFilmes((anteriores) =>
+        anteriores.filter((filme) => filme.id !== id))
+    } catch (e) {
+      setAviso(`Não foi possível remover o filme. ${e.message}`)
+    }
   }
 
   // Atualiza o filme na API e troca na lista pela versão devolvida
@@ -111,6 +117,7 @@ export default function App() {
       />
       <Filtros ativo={status} aoMudar={setStatus} />
       <p>Exibindo {visiveis.length} de {filmes.length} filmes</p>
+      {aviso && <p className="erro" role="alert">{aviso}</p>}
       <main>{conteudo}</main>
 
       {editando !== null && (

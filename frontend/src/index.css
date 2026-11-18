@@ -310,6 +310,9 @@ footer > .addFooter{
     color: var(--cor-alerta);
     white-space: pre-line;
 }
+.erro{
+    color: var(--cor-alerta);
+}
 #modal #can{
     padding: 3px;
     color: var(--cor-alerta-claro);
