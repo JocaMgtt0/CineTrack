@@ -45,8 +45,8 @@ Pra gerar a versão de produção, rode `npm run build` dentro de `frontend/`. O
 Frontend em React (`frontend/`):
 
 - Lista de filmes carregada da API, com as mensagens de carregando, de erro e de lista vazia.
-- Cadastro e edição no mesmo modal, e remoção pelo botão do card. Cada ação chama a API primeiro e só depois atualiza a tela.
-- Erros da API aparecem dentro do modal, como a lista de erros de validação do servidor. Se o backend estiver fora do ar, a tela e o modal avisam.
+- Cadastro e edição no mesmo modal, e remoção pelo botão do card, com confirmação. Cada ação chama a API primeiro e só depois atualiza a tela.
+- Erros da API aparecem dentro do modal, como a lista de erros de validação do servidor. Se o backend estiver fora do ar ou a remoção falhar, a tela avisa.
 - Busca por título e filtro por status combinados, guardados no `localStorage` (continuam iguais depois de recarregar a página).
 - Contador "Exibindo X de Y filmes" e o total de filmes no título da aba.
 - Pôster padrão quando a URL fica vazia.

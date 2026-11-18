@@ -63,3 +63,21 @@ O caso 1 precisa do DevTools porque o próprio formulário já bloqueia a nota f
 | O erro da API não aparecia para o usuário: o modal não mostrava nada e a tela só dizia "Failed to fetch" | `e862f10 fix: erros da api exibidos no modal` |
 | Card do React sem imagem quando o pôster ficava vazio (RF-01), com aviso de `src` vazio no console | `41344ed fix: poster padrao no card` |
 | `/stats` devolvia `mediaNotas` `null` quando não havia filmes | `866f6af fix: media das notas sem filmes` |
+
+## Segunda rodada: remoção
+
+Em 17/11/2026, ao conferir o código com a especificação da Parte 2, apareceram dois pontos que faltavam na remoção:
+
+| Problema | Requisito | Commit |
+|----------|-----------|--------|
+| O botão Remover apagava direto, sem pedir confirmação como na Parte 1 | RF-01 e RF-06 | `d41d389 fix: confirmacao antes de remover` |
+| Se a remoção falhasse, o erro ia só para o console, sem mensagem na tela | RF-05 | `9d8c6db fix: aviso quando a remocao falha` |
+
+Depois das correções, a remoção foi testada de novo pela interface. Nesta rodada, as portas 3000 e 5173 estavam ocupadas por outro projeto no Docker. Por isso o backend subiu com `PORT=3001`, o Vite subiu na porta 5174 e o `BASE` do `api.js` apontou para a 3001 só durante o teste, sem ir para o commit. A resposta da confirmação foi controlada pelo console do DevTools, substituindo o `window.confirm`, para testar o Cancelar e o OK.
+
+| # | Caso | Resultado esperado | Resultado |
+|---|------|--------------------|-----------|
+| 1 | Remover Parasita e cancelar a confirmação | O filme continua e nada é enviado à API | Passou: apareceu a pergunta "Remover este filme?", o card continuou e nenhum `DELETE` foi feito |
+| 2 | Remover Parasita e confirmar | O card some | Passou: `DELETE /filmes/2` respondeu 204 e o card sumiu |
+| 3 | Remover um filme que já tinha sido apagado por fora (`DELETE /filmes/3` direto na API) | A tela avisa e o card continua | Passou: apareceu em vermelho "Não foi possível remover o filme. Filme não encontrado" |
+| 4 | Desligar o backend e remover Duna | A tela avisa e continua funcionando | Passou: apareceu "Não foi possível remover o filme. Sem conexão com a API. Confira se o backend está rodando.", o card continuou e o filtro Assistindo seguiu funcionando |
